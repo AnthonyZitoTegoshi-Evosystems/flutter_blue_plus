@@ -906,7 +906,7 @@ public class FlutterBluePlusPlugin implements
                             result.error("writeCharacteristic", str, null);
                             break;
                         }
-                    }*/s
+                    }*/
 
                     // remember the data we are writing
                     String key = remoteId + ":" + serviceUuid + ":" + characteristicUuid;
