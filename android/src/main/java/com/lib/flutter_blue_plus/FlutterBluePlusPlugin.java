@@ -896,7 +896,7 @@ public class FlutterBluePlusPlugin implements
                     }
 
                     // check maximum payload
-                    if (!allowLongWrite) {
+                    /*if (!allowLongWrite) {
                         int maxLen = getMaxPayload(remoteId, writeType, allowLongWrite);
                         int dataLen = hexToBytes(value).length;
                         if (dataLen > maxLen) {
@@ -906,7 +906,7 @@ public class FlutterBluePlusPlugin implements
                             result.error("writeCharacteristic", str, null);
                             break;
                         }
-                    }
+                    }*/s
 
                     // remember the data we are writing
                     String key = remoteId + ":" + serviceUuid + ":" + characteristicUuid;
