@@ -896,14 +896,16 @@ public class FlutterBluePlusPlugin implements
                     }
 
                     // check maximum payload
-                    int maxLen = getMaxPayload(remoteId, writeType, allowLongWrite);
-                    int dataLen = hexToBytes(value).length;
-                    if (dataLen > maxLen) {
-                        String a = writeTypeInt == 0 ? "withResponse" : "withoutResponse";
-                        String b = writeTypeInt == 0 ? (allowLongWrite ? ", allowLongWrite" : ", noLongWrite") : "";
-                        String str = "data longer than allowed. dataLen: " + dataLen + " > max: " + maxLen + " (" + a + b +")";
-                        result.error("writeCharacteristic", str, null);
-                        break;
+                    if (!allowLongWrite) {
+                        int maxLen = getMaxPayload(remoteId, writeType, allowLongWrite);
+                        int dataLen = hexToBytes(value).length;
+                        if (dataLen > maxLen) {
+                            String a = writeTypeInt == 0 ? "withResponse" : "withoutResponse";
+                            String b = writeTypeInt == 0 ? (allowLongWrite ? ", allowLongWrite" : ", noLongWrite") : "";
+                            String str = "data longer than allowed. dataLen: " + dataLen + " > max: " + maxLen + " (" + a + b +")";
+                            result.error("writeCharacteristic", str, null);
+                            break;
+                        }
                     }
 
                     // remember the data we are writing
